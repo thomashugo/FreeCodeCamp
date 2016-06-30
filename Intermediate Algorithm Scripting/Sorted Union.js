@@ -1,11 +1,9 @@
 
 function uniteUnique(arr) {
   
-  var arrArr = Array.from(arguments);
-  
   var final = [];
   
-  arrArr.map(function(smallArr){
+  Array.from(arguments).map(function(smallArr){
     smallArr.map(function(val){
       if (final.indexOf(val) === -1){
         final.push(val);
