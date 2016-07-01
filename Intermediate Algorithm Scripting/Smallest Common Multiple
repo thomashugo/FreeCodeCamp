@@ -1,0 +1,35 @@
+function smallestCommons(arr) {
+
+    var bigNo = Math.max.apply(null, arr);
+    var smallNo = Math.min.apply(null, arr);
+    var range = [];
+    var maxNum = bigNo;
+    var smallCom = bigNo;
+
+    for (var i = smallNo; i <= bigNo;) {
+        range.push(i);
+        i++;
+    }
+
+    for (var n = bigNo - 1; n >= smallNo && n > 1; --n) {
+        maxNum = maxNum * n;
+    }
+
+    function isSmallest(num) {
+        return smallCom % num === 0;
+    }
+
+    for (var m = bigNo; m < maxNum; m + bigNo) {
+        smallCom = smallCom + bigNo;
+
+        if (range.every(isSmallest)) {
+            return smallCom;
+        }
+    }
+
+    return smallCom;
+
+}
+
+
+smallestCommons([1, 13]);
